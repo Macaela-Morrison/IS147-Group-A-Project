@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Expense {
     private String name;
     private double amount;
@@ -6,7 +8,7 @@ public class Expense {
     //Default constructor
     public Expense()
     {
-        super();
+
     }
 
     //Parameterized constructor
@@ -31,9 +33,10 @@ public class Expense {
         return category;
     }
 
-    public void addExpense()
+    public void addExpense(ArrayList<Expense> recurringExpenses, Expense currentExpense)
     {
-        //Add expense to array
+        //Add expense to array list
+        recurringExpenses.add(currentExpense);
     }
 
     public void findExpense()

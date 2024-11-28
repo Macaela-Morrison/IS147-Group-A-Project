@@ -2,11 +2,6 @@ import java.util.Scanner;
 
 public class DisplayMenus {
 
-    DisplayMenus()
-    {
-
-    }
-
     public void mainMenu(Scanner input){
         while (true) {
             System.out.println("Welcome to Personal Budgeting Program! Please see menu options below:");
