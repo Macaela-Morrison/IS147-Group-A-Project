@@ -86,6 +86,17 @@ public class User {
         this.expenses = expenses;
     }
 
+    public ArrayList<Expense> getRecurringExpenses()
+    {
+        return recurringExpenses;
+    }
+
+    public ArrayList<Expense> getNonRecurringExpenses()
+    {
+        return nonRecurringExpenses;
+    }
+
+
     public void addExpense(ArrayList<Expense> recurringExpenses,  ArrayList<Expense> nonRecurringExpenses, Expense currentExpense)
     {
         //Add expense to array list
@@ -100,9 +111,23 @@ public class User {
 
     }
 
-    public void findExpense()
+    public Expense findExpense(ArrayList<Expense> recurringExpenses,  ArrayList<Expense> nonRecurringExpenses)
     {
+        Iterator<Expense> rit = recurringExpenses.iterator();
+        while(rit.hasNext())
+        {
+            Expense temp = rit.next();
+            System.out.println(temp);
+        }
 
+        Iterator<Expense> nit = nonRecurringExpenses.iterator();
+        while(nit.hasNext())
+        {
+            Expense temp = nit.next();
+            System.out.println(temp);
+        }
+
+        return rit.next();
     }
 
     public void renameExpense()
@@ -110,30 +135,68 @@ public class User {
         //Might add this feature
     }
 
-    public void deleteExpense()
+    public void deleteExpense(boolean recurring, int index)
     {
-        //Search the array
-        findExpense();
+        //List elements in the array list
+        if(recurring)
+        {
+            //delete recurring expense
+            if(index > 0 && index <= recurringExpenses.size())
+            {
+                Expense removeExpense = recurringExpenses.remove(index - 1);
+                System.out.println("Expense successfully removed");
+            }
+            else
+            {
+                System.out.println("Invalid choice");
+            }
+        }
+        else
+        {
+            //delete non-recurring expense
+            if(index > 0 && index <= nonRecurringExpenses.size())
+            {
+                Expense removeExpense = nonRecurringExpenses.remove(index - 1);
+                System.out.println("Expense successfully removed");
+            }
+            else
+            {
+                System.out.println("Invalid choice");
+            }
+        }
 
-        //Remove the expense
-        //Move the other expenses over to avoid gaps
+
+
     }
 
     public void editExpense()
     {
         //Search the array
-        findExpense();
+        //findExpense();
 
         //Change data
     }
 
     public void displayRecurring()
     {
+        int index = 1;
         Iterator<Expense> it = recurringExpenses.iterator();
+        while(it.hasNext()) {
+            Expense temp = it.next();
+            System.out.println(index + ". " + temp);
+            index++;
+        }
+    }
+
+    public void displayNonRecurring()
+    {
+        int index = 1;
+        Iterator<Expense> it = nonRecurringExpenses.iterator();
         while(it.hasNext())
         {
             Expense temp = it.next();
-            System.out.println(temp);
+            System.out.println(index + ". " + temp);
+            index++;
         }
     }
 }

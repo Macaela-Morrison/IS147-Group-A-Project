@@ -19,7 +19,7 @@ public class DisplayMenus {
                     recurringExpensesMenu(input, currrentUser);
                     break;
                 case 2:
-                    nonRecurringExpensesMenu(input);
+                    nonRecurringExpensesMenu(input,currrentUser);
                     break;
                 case 3:
                     displayOverallTotal();
@@ -66,7 +66,8 @@ public class DisplayMenus {
 
                     break;
                 case 2:
-                    System.out.println("Delete Expense: ");
+                    System.out.println("You chose to delete an expense");
+                    deleteExpenseMenu(currentUser, true);
                     break;
                 case 3:
                     System.out.println("View Total Expenses: ");
@@ -84,7 +85,7 @@ public class DisplayMenus {
         }
     }
 
-    public void nonRecurringExpensesMenu(Scanner input) {
+    public void nonRecurringExpensesMenu(Scanner input, User currentUser) {
         boolean exitNonRecurringMenu = false;
 
         while (!exitNonRecurringMenu) {
@@ -151,6 +152,7 @@ public class DisplayMenus {
         String name = input.nextLine();
         System.out.println("Enter the amount:");
         double amount = input.nextDouble();
+        input.nextLine(); //Clear the leftover newline character
         System.out.println("Enter the category:");
         String category = input.nextLine();
         System.out.println("Is this a recurring expense? Type Y for yes and N for no");
@@ -168,5 +170,30 @@ public class DisplayMenus {
         currentUser.addExpense(currentUser.recurringExpenses, currentUser.nonRecurringExpenses, expense);
 
     }
+
+    public static void deleteExpenseMenu(User currentUser, boolean recurring)
+    {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please choose an expense to delete:");
+        int size = 0;
+        int index = 0;
+        if(recurring)
+        {
+            currentUser.displayRecurring();
+            size = currentUser.getRecurringExpenses().size();
+        }
+        else
+        {
+            currentUser.displayNonRecurring();
+            size = currentUser.getNonRecurringExpenses().size();
+        }
+
+        index = input.nextInt();
+        currentUser.deleteExpense(recurring, index);
+
+        //search
+    }
+
+
 
 }

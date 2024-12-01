@@ -17,8 +17,9 @@ public class Main {
         User[] users = {tempUser, tempUser2, tempUser3};
         Scanner input = new Scanner(System.in);
         DisplayMenus menu = new DisplayMenus();
-        tempUser.displayRecurring();
+        //tempUser.displayRecurring();
         menu.mainMenu(input, tempUser);
+        tempUser.displayRecurring();
     }
 
 

@@ -60,7 +60,7 @@ public class Expense {
     @Override
     public String toString()
     {
-        return "Expense: " + name + ", Amount: $" + amount + ", Date: " + timestamp;
+        return "Expense: " + name + ", Amount: $" + amount + ", Date: " + timestamp + ", Category: " + category;
     }
 
 

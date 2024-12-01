@@ -2,6 +2,7 @@ public class MenuColors {
 
     //This class provides the code needed to use ANSI escape sequences to change menu text color
     //Code to reset color to default
+    //ANSI codes were pulled from this website : https://www.geeksforgeeks.org/how-to-print-colored-text-in-java-console/
     public static final String RESET = "\u001B[0m";
 
     //ANSI codes for string colors
