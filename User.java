@@ -1,3 +1,5 @@
+
+import java.util.*;
 public class User {
 
     private String username;
@@ -9,12 +11,15 @@ public class User {
 
     private Expense expenses;
 
+    ArrayList<Expense> recurringExpenses = new ArrayList<>();
+    ArrayList<Expense> nonRecurringExpenses = new ArrayList<>();
+
     User()
     {
 
     }
 
-    User(String username, String name, String lastName, String password, int annualIncome, int monthlyIncome, Expense expenses)
+    User(String username, String name, String lastName, String password, int annualIncome, int monthlyIncome)
     {
         this.username = username;
         this.name = name;
@@ -81,5 +86,54 @@ public class User {
         this.expenses = expenses;
     }
 
+    public void addExpense(ArrayList<Expense> recurringExpenses,  ArrayList<Expense> nonRecurringExpenses, Expense currentExpense)
+    {
+        //Add expense to array list
+        if(currentExpense.getIsRecurring())
+        {
+            recurringExpenses.add(currentExpense);
+        }
+        else
+        {
+            nonRecurringExpenses.add(currentExpense);
+        }
 
+    }
+
+    public void findExpense()
+    {
+
+    }
+
+    public void renameExpense()
+    {
+        //Might add this feature
+    }
+
+    public void deleteExpense()
+    {
+        //Search the array
+        findExpense();
+
+        //Remove the expense
+        //Move the other expenses over to avoid gaps
+    }
+
+    public void editExpense()
+    {
+        //Search the array
+        findExpense();
+
+        //Change data
+    }
+
+    public void displayRecurring()
+    {
+        Iterator<Expense> it = recurringExpenses.iterator();
+        while(it.hasNext())
+        {
+            Expense temp = it.next();
+            System.out.println(temp);
+        }
+    }
 }

@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class DisplayMenus {
 
-    public void mainMenu(Scanner input){
+    public void mainMenu(Scanner input, User currrentUser){
         while (true) {
             System.out.println("Welcome to Personal Budgeting Program! Please see menu options below:");
             System.out.println("1. Recurring Expenses");
@@ -16,7 +16,7 @@ public class DisplayMenus {
 
             switch (number) {
                 case 1:
-                    recurringExpensesMenu(input);
+                    recurringExpensesMenu(input, currrentUser);
                     break;
                 case 2:
                     nonRecurringExpensesMenu(input);
@@ -40,7 +40,7 @@ public class DisplayMenus {
         }
     }
 
-    public void recurringExpensesMenu(Scanner input) {
+    public void recurringExpensesMenu(Scanner input, User currentUser) {
         boolean exitRecurringMenu = false;
 
         while (!exitRecurringMenu) {
@@ -58,7 +58,12 @@ public class DisplayMenus {
                     System.out.println("Exiting the program");
                     break;
                 case 1:
-                    System.out.println("Add Expense: ");
+                    System.out.println("You chose to add an expense");
+                    addExpenseMenu(currentUser);
+                    
+                    //Testing
+                    currentUser.displayRecurring();
+
                     break;
                 case 2:
                     System.out.println("Delete Expense: ");
@@ -138,5 +143,30 @@ public class DisplayMenus {
         }
     }
 
-    
+    public static void addExpenseMenu(User currentUser)
+    {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please provide the details of your expense.");
+        System.out.println("Enter a name for your expense");
+        String name = input.nextLine();
+        System.out.println("Enter the amount:");
+        double amount = input.nextDouble();
+        System.out.println("Enter the category:");
+        String category = input.nextLine();
+        System.out.println("Is this a recurring expense? Type Y for yes and N for no");
+        String answer = input.nextLine();
+        boolean recurring = false;
+        if(answer.equalsIgnoreCase("Y"))
+        {
+            recurring = true;
+        }
+
+        Expense expense = new Expense();
+
+        expense = expense.createExpense(name, amount, category, recurring);
+
+        currentUser.addExpense(currentUser.recurringExpenses, currentUser.nonRecurringExpenses, expense);
+
+    }
+
 }
