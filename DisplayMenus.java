@@ -7,7 +7,7 @@ public class DisplayMenus {
             System.out.println("Welcome to Personal Budgeting Program! Please see menu options below:");
             System.out.println("1. Recurring Expenses");
             System.out.println("2. Non-Recurring Expenses");
-            System.out.println("3. Overall Total");
+            System.out.println("3. Overall Totals");
             System.out.println("4. Yearly Overview");
             System.out.println("5. Settings");
             System.out.println("0. Quit");
