@@ -9,7 +9,7 @@ public class User {
     private int annualIncome;
     private int monthlyIncome;
 
-    private Expense expenses;
+    private AppSettings settings;
 
     ArrayList<Expense> recurringExpenses = new ArrayList<>();
     ArrayList<Expense> nonRecurringExpenses = new ArrayList<>();
@@ -28,7 +28,9 @@ public class User {
         this.annualIncome = annualIncome;
         this.monthlyIncome = monthlyIncome;
 
+
     }
+
 
     public String getName() {
         return name;
@@ -78,14 +80,6 @@ public class User {
         this.monthlyIncome = monthlyIncome;
     }
 
-    public Expense getExpenses() {
-        return expenses;
-    }
-
-    public void setExpenses(Expense expenses) {
-        this.expenses = expenses;
-    }
-
     public ArrayList<Expense> getRecurringExpenses()
     {
         return recurringExpenses;
@@ -96,8 +90,11 @@ public class User {
         return nonRecurringExpenses;
     }
 
+    public AppSettings getSettings() {
+        return settings;
+    }
 
-    public void addExpense(ArrayList<Expense> recurringExpenses,  ArrayList<Expense> nonRecurringExpenses, Expense currentExpense)
+    public void addExpense(ArrayList<Expense> recurringExpenses, ArrayList<Expense> nonRecurringExpenses, Expense currentExpense)
     {
         //Add expense to array list
         if(currentExpense.getIsRecurring())
@@ -199,4 +196,56 @@ public class User {
             index++;
         }
     }
+
+    public double calcTotals(boolean recurring)
+    {
+        if(recurring)
+        {
+            //Return the recurring totals
+            //Iterate through the array list and create a running total of the amounts.
+            //You can use a for-loop to iterate through the array list
+
+            for(int i = 0; i < recurringExpenses.size(); i++)
+            {
+                //get a running total
+                //you have something like total += temp; to get a running total
+            }
+            //There are other ways to iterate through an array list, but we have to have a for-loop in the project 
+        }
+
+        //Return the non-recurring totals
+        //Do the same thing as above
+        return 0;
+    }
+
+    public void displayTotals(boolean recurring)
+    {
+        if(recurring)
+        {
+            displayRecurring();
+            calcTotals(recurring);
+            //Then print out the totals
+            System.out.println("Recurring expenses: ");
+
+        }
+       else
+        {
+            displayNonRecurring();
+            calcTotals(recurring);
+            //Print out the non-recurring totals
+            System.out.println("Non-recurring expenses: ");
+        }
+
+
+    }
+
+    public void totalRemaining(double monthlyIncome)
+    {
+        //Take the sum of the recurring and non-recurring expenses and minus it from the monthly income
+        //You can use the calcTotals() function to get the totals for each type of expense
+        //Add the expenses together and minus them from the monthly income
+        //Print the total
+
+    }
+
 }

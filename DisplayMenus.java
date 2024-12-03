@@ -28,10 +28,11 @@ public class DisplayMenus {
                     displayYearlyOverview();
                     break;
                 case 5:
-                    settingsMenu(input);
+                    settingsMenu(input, currrentUser);
                     break;
                 case 0:
                     System.out.println("Exiting the program");
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
@@ -56,13 +57,14 @@ public class DisplayMenus {
             switch (choice) {
                 case 0:
                     System.out.println("Exiting the program");
+                    System.exit(0);
                     break;
                 case 1:
                     System.out.println("You chose to add an expense");
                     addExpenseMenu(currentUser);
                     
                     //Testing
-                    currentUser.displayRecurring();
+                    //currentUser.displayRecurring();
 
                     break;
                 case 2:
@@ -70,7 +72,8 @@ public class DisplayMenus {
                     deleteExpenseMenu(currentUser, true);
                     break;
                 case 3:
-                    System.out.println("View Total Expenses: ");
+                    System.out.println("View Totals: ");
+                    currentUser.displayTotals(true);
                     break;
                 case 4:
                     System.out.println("Search for Expense: ");
@@ -101,15 +104,19 @@ public class DisplayMenus {
             switch (choice) {
                 case 0:
                     System.out.println("Exiting the program");
+                    System.exit(0);
                     break;
                 case 1:
-                    System.out.println("Add Expense: ");
+                    System.out.println("You chose to add an expense");
+                    addExpenseMenu(currentUser);
                     break;
                 case 2:
-                    System.out.println("Delete Expense: ");
+                    System.out.println("You chose to delete an expense");
+                    deleteExpenseMenu(currentUser, false);
                     break;
                 case 3:
-                    System.out.println("View Total: ");
+                    System.out.println("View Totals: ");
+                    currentUser.displayTotals(false);
                     break;
                 case 4:
                     System.out.println("Search for an Expense: ");
@@ -133,13 +140,18 @@ public class DisplayMenus {
         System.out.println("Displaying yearly overview: ");
     }
 
-    public static void settingsMenu(Scanner input) {
+    public static void settingsMenu(Scanner input, User currentUser) {
         boolean exitSettingsMenu = false;
 
         while (!exitSettingsMenu) {
             System.out.println("Settings Menu:");
             System.out.print("Enter a choice: ");
+            System.out.print("1. Edit settings");
             int choice = input.nextInt();
+            if(choice == 1)
+            {
+                currentUser.getSettings().editSettings();
+            }
             System.out.println();
         }
     }
@@ -190,8 +202,6 @@ public class DisplayMenus {
 
         index = input.nextInt();
         currentUser.deleteExpense(recurring, index);
-
-        //search
     }
 
 

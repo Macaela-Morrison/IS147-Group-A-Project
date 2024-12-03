@@ -7,6 +7,10 @@ public class AppSettings {
 
     //Possible feature
     //public String textColor;
+    public AppSettings()
+    {
+
+    }
 
     public AppSettings(double monthlyIncome, double yearlyIncome)
     {
@@ -18,8 +22,16 @@ public class AppSettings {
         return monthlyIncome;
     }
 
+    public void setMonthlyIncome(double monthlyIncome) {
+        this.monthlyIncome = monthlyIncome;
+    }
+
     public double getYearlyIncome() {
         return yearlyIncome;
+    }
+
+    public void setYearlyIncome(double yearlyIncome) {
+        this.yearlyIncome = yearlyIncome;
     }
 
     public void editSettings()
