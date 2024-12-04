@@ -239,13 +239,39 @@ public class User {
 
     }
 
+    public double calcTotals(boolean recurring)
+    {   
+        double total = 0;
+        if (recurring)
+        {
+            // calculate total for recurring expense
+            for (int i = 0; i < recurringExpenses.size(); i++)
+            {
+                total += recurringExpenses.get(i).getAmount();
+            }
+        }
+        else
+        {
+            // Calculate total for non-recurring expenses
+            for (int i = 0; i < nonRecurringExpenses.size(); i++)
+            {
+                total += nonRecurringExpenses.get(i).getAmount();
+            }
+        }
+
+        return total;
+    }
     public void totalRemaining(double monthlyIncome)
     {
-        //Take the sum of the recurring and non-recurring expenses and minus it from the monthly income
-        //You can use the calcTotals() function to get the totals for each type of expense
-        //Add the expenses together and minus them from the monthly income
-        //Print the total
+        // Get totals for recurring and non-recurring expenses
+        double recurringTotal = calcTotals(true);
+        double nonRecurringTotal = calcTotals(false);
 
-    }
+        // Calculate remaining incme
+        double remainingIncome = monthlyIncome - (recurringTotal + nonRecurringTotal);
+
+        // Print the total remaining
+        System.out.printf("Total remaining income: %.2f\n", remainingIncome);
+    }      
 
 }
