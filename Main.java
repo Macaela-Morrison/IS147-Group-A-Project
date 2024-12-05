@@ -11,7 +11,7 @@ public class Main {
         Expense testExpense2 = new Expense("Rent", 1500, "Housing", true);
         Expense testExpense3 = new Expense("Insurance", 800, "Housing", true);
         Expense testExpense4 = new Expense("Fix microwave", 150, "Household", false);
-        User tempUser = new User("Test", "Test", "Test", "Test", 65000, 5417);
+        User tempUser = new User("FriendsFan", "Phoebe", "Buffay", "password", 65000, 5417);
 
         tempUser.addExpense(tempUser.recurringExpenses, tempUser.nonRecurringExpenses, testExpense);
         tempUser.addExpense(tempUser.recurringExpenses, tempUser.nonRecurringExpenses, testExpense2);
