@@ -36,17 +36,34 @@ public class Expense {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public double getAmount()
     {
         return amount;
     }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     public String getCategory()
     {
         return category;
     }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public boolean getIsRecurring() {
         return isRecurring;
+    }
+
+    public void setRecurring(boolean recurring) {
+        isRecurring = recurring;
     }
 
     public Expense createExpense(String name, double amount, String category, boolean isRecurring)

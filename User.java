@@ -136,7 +136,7 @@ public class User {
             //delete recurring expense
             if(index > 0 && index <= recurringExpenses.size())
             {
-                Expense removeExpense = recurringExpenses.remove(index - 1);
+                recurringExpenses.remove(index - 1);
                 System.out.println("Expense successfully removed");
             }
             else
@@ -149,7 +149,7 @@ public class User {
             //delete non-recurring expense
             if(index > 0 && index <= nonRecurringExpenses.size())
             {
-                Expense removeExpense = nonRecurringExpenses.remove(index - 1);
+                nonRecurringExpenses.remove(index - 1);
                 System.out.println("Expense successfully removed");
             }
             else
@@ -163,14 +163,44 @@ public class User {
     }
 
 
-    /*public void editExpense(boolean recurring, int index)
+    public void editExpense(boolean recurring, int index, String name, Double amount, String category, boolean stillRecurring)
     {
-        if(recurring)
-        {
+        if(recurring) {
             Expense tempExpense = recurringExpenses.get(index);
-            if(recurringExpenses.get(index).getName().equalsIgnoreCase())
+            tempExpense.setName(name);
+            tempExpense.setAmount(amount);
+            tempExpense.setCategory(category);
+            tempExpense.setRecurring(stillRecurring);
+
+            if (stillRecurring)
+            {
+                return;
+            }
+            else
+            {
+                nonRecurringExpenses.add(tempExpense);
+                recurringExpenses.remove(index);
+            }
         }
-    }*/
+        else
+        {
+            Expense tempExpense = nonRecurringExpenses.get(index);
+            tempExpense.setName(name);
+            tempExpense.setAmount(amount);
+            tempExpense.setCategory(category);
+            tempExpense.setRecurring(stillRecurring);
+
+            if (!stillRecurring)
+            {
+                return;
+            }
+            else
+            {
+                recurringExpenses.add(tempExpense);
+                recurringExpenses.remove(index);
+            }
+        }
+    }
 
     public void displayRecurring()
     {

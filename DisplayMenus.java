@@ -83,7 +83,8 @@ public class DisplayMenus {
                     System.out.println("Search for Expense: ");
                     break;
                 case 5:
-                    System.out.println("Edit Exisiting Expense: ");
+                    System.out.println("You chose to edit an expense: ");
+                    editExpenseMenu(currentUser, true);
                     break;
                 case 6:
                     exitRecurringMenu = true;
@@ -131,7 +132,8 @@ public class DisplayMenus {
                     System.out.println("Search for an Expense: ");
                     break;
                 case 5:
-                    System.out.println("Edit Exisiting Expense: ");
+                    System.out.println("You chose to edit an expense: ");
+                    editExpenseMenu(currentUser, false);
                     break;
                 case 6:
                     exitNonRecurringMenu = true;
@@ -216,8 +218,43 @@ public class DisplayMenus {
         currentUser.deleteExpense(recurring, index);
     }
 
+    public static void editExpenseMenu(User currentUser, boolean recurring)
+    {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please choose an expense to edit:");
+        int size = 0;
+        int index = 0;
+        if(recurring)
+        {
+            currentUser.displayRecurring();
+            size = currentUser.getRecurringExpenses().size();
+        }
+        else
+        {
+            currentUser.displayNonRecurring();
+            size = currentUser.getNonRecurringExpenses().size();
+        }
 
+        index = input.nextInt();
+        input.nextLine();
 
+        System.out.println("Please provide the details of your expense.");
+        System.out.println("Enter a name for your expense");
+        String name = input.nextLine();
+        System.out.println("Enter the amount:");
+        double amount = input.nextDouble();
+        input.nextLine(); //Clear the leftover newline character
+        System.out.println("Enter the category:");
+        String category = input.nextLine();
+        System.out.println("Is this a recurring expense? Type Y for yes and N for no");
+        String answer = input.nextLine();
+        boolean stillRecurring = false;
+        if(answer.equalsIgnoreCase("Y"))
+        {
+            stillRecurring = true;
+        }
+        currentUser.editExpense(recurring, index - 1, name, amount, category, stillRecurring);
+    }
 
 
 
