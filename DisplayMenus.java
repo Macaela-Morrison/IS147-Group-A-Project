@@ -174,14 +174,14 @@ public class DisplayMenus {
     {
         Scanner input = new Scanner(System.in);
         System.out.println("Please provide the details of your expense.");
-        System.out.println("Enter a name for your expense");
+        System.out.print("Enter a name for your expense: ");
         String name = input.nextLine();
-        System.out.println("Enter the amount:");
+        System.out.print("Enter the amount: $");
         double amount = input.nextDouble();
         input.nextLine(); //Clear the leftover newline character
-        System.out.println("Enter the category:");
+        System.out.print("Enter the category: ");
         String category = input.nextLine();
-        System.out.println("Is this a recurring expense? Type Y for yes and N for no");
+        System.out.print("Is this a recurring expense? Type Y for yes and N for no: ");
         String answer = input.nextLine();
         boolean recurring = false;
         if(answer.equalsIgnoreCase("Y"))
@@ -221,7 +221,7 @@ public class DisplayMenus {
     public static void editExpenseMenu(User currentUser, boolean recurring)
     {
         Scanner input = new Scanner(System.in);
-        System.out.println("Please choose an expense to edit:");
+        System.out.println("Please choose an expense to edit: ");
         int size = 0;
         int index = 0;
         if(recurring)
@@ -239,14 +239,14 @@ public class DisplayMenus {
         input.nextLine();
 
         System.out.println("Please provide the details of your expense.");
-        System.out.println("Enter a name for your expense");
+        System.out.print("Enter a name for your expense: ");
         String name = input.nextLine();
-        System.out.println("Enter the amount:");
+        System.out.print("Enter the amount: $");
         double amount = input.nextDouble();
         input.nextLine(); //Clear the leftover newline character
-        System.out.println("Enter the category:");
+        System.out.print("Enter the category: ");
         String category = input.nextLine();
-        System.out.println("Is this a recurring expense? Type Y for yes and N for no");
+        System.out.print("Is this a recurring expense? Type Y for yes and N for no: ");
         String answer = input.nextLine();
         boolean stillRecurring = false;
         if(answer.equalsIgnoreCase("Y"))
