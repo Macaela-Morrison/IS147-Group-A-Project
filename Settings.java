@@ -19,6 +19,7 @@ public class Settings {
     public void setType(String type) {
         this.type = type;
     }
+
     public void editSettings()
     {
         Scanner userInput = new Scanner(System.in);

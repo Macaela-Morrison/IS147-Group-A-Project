@@ -147,7 +147,15 @@ public class DisplayMenus {
 
 
     public void displayOverallTotal(User currentUser) {
-        System.out.println("Displaying overall total: ");
+        double totalRecurring = currentUser.calcTotals(true);
+        double totalNonRecurring = currentUser.calcTotals(false);
+        double overallTotal = totalRecurring + totalNonRecurring;
+        System.out.println("Total recurring expenses: $" + totalRecurring);
+        System.out.println("Total non-recurring expenses: $" + totalNonRecurring);
+        System.out.println("Your total expenses for this month so far is: $" + overallTotal);
+
+
+
     }
 
     public static void displayYearlyOverview() {

@@ -229,18 +229,22 @@ public class User {
     {
         if(recurring)
         {
+            //Print out recurring expenses
+            System.out.println("Recurring expenses: ");
             displayRecurring();
             calcTotals(recurring);
-            //Then print out the totals
-            System.out.println("Recurring expenses: ");
+
+
 
         }
        else
         {
+            //Print out non-recurring expenses
+            System.out.println("Non-recurring expenses: ");
             displayNonRecurring();
             calcTotals(recurring);
-            //Print out the non-recurring totals
-            System.out.println("Non-recurring expenses: ");
+
+
         }
 
 
