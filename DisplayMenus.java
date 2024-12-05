@@ -1,10 +1,13 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class DisplayMenus {
 
     public void mainMenu(Scanner input, User currrentUser){
         while (true) {
+
+
             System.out.println("Welcome to Personal Budgeting Program! Please see menu options below:");
+            System.out.printf("You have %.2f remaining for this month\n", currrentUser.totalRemaining());
             System.out.println("1. Recurring Expenses");
             System.out.println("2. Non-Recurring Expenses");
             System.out.println("3. Overall Totals");
@@ -22,7 +25,7 @@ public class DisplayMenus {
                     nonRecurringExpensesMenu(input,currrentUser);
                     break;
                 case 3:
-                    displayOverallTotal();
+                    displayOverallTotal(currrentUser);
                     break;
                 case 4:
                     displayYearlyOverview();
@@ -49,7 +52,8 @@ public class DisplayMenus {
             System.out.println("2. Delete Expense");
             System.out.println("3. View Totals");
             System.out.println("4. Search For An Expense");
-            System.out.println("5. Back to Main Menu");
+            System.out.println("5. Edit Existing Expense");
+            System.out.println("6. Back to Main Menu");
             System.out.println("0. Quit");
             System.out.print("Enter a choice: ");
             int choice = input.nextInt();
@@ -62,7 +66,7 @@ public class DisplayMenus {
                 case 1:
                     System.out.println("You chose to add an expense");
                     addExpenseMenu(currentUser);
-                    
+
                     //Testing
                     //currentUser.displayRecurring();
 
@@ -79,6 +83,9 @@ public class DisplayMenus {
                     System.out.println("Search for Expense: ");
                     break;
                 case 5:
+                    System.out.println("Edit Exisiting Expense: ");
+                    break;
+                case 6:
                     exitRecurringMenu = true;
                     break;
                 default:
@@ -97,7 +104,9 @@ public class DisplayMenus {
             System.out.println("2. Delete Non-Recurring Expense");
             System.out.println("3. View Non-Recurring Expense Total");
             System.out.println("4. Search for a Non-Recurring expense");
-            System.out.println("5. Back to Main Menu");
+            System.out.println("5. Edit Existing Expense");
+            System.out.println("6. Back to Main Menu");
+            System.out.println("0. Quit");
             System.out.print("Enter a choice: ");
             int choice = input.nextInt();
 
@@ -122,6 +131,9 @@ public class DisplayMenus {
                     System.out.println("Search for an Expense: ");
                     break;
                 case 5:
+                    System.out.println("Edit Exisiting Expense: ");
+                    break;
+                case 6:
                     exitNonRecurringMenu = true;
                     break;
                 default:
@@ -132,7 +144,7 @@ public class DisplayMenus {
     }
 
 
-    public void displayOverallTotal() {
+    public void displayOverallTotal(User currentUser) {
         System.out.println("Displaying overall total: ");
     }
 
@@ -150,7 +162,7 @@ public class DisplayMenus {
             int choice = input.nextInt();
             if(choice == 1)
             {
-                currentUser.getSettings().editSettings();
+                currentUser.getUserSettings().editSettings();
             }
             System.out.println();
         }
@@ -203,6 +215,9 @@ public class DisplayMenus {
         index = input.nextInt();
         currentUser.deleteExpense(recurring, index);
     }
+
+
+
 
 
 

@@ -6,10 +6,10 @@ public class User {
     private String name;
     private String lastName;
     private String password;
-    private int annualIncome;
-    private int monthlyIncome;
+    private double annualIncome;
+    private double monthlyIncome;
 
-    private AppSettings settings;
+    private UserSettings userSettings = new UserSettings();
 
     ArrayList<Expense> recurringExpenses = new ArrayList<>();
     ArrayList<Expense> nonRecurringExpenses = new ArrayList<>();
@@ -28,7 +28,7 @@ public class User {
         this.annualIncome = annualIncome;
         this.monthlyIncome = monthlyIncome;
 
-
+        this.userSettings = new UserSettings(monthlyIncome, annualIncome, "User settings");
     }
 
 
@@ -64,7 +64,7 @@ public class User {
         this.password = password;
     }
 
-    public int getAnnualIncome() {
+    public double getAnnualIncome() {
         return annualIncome;
     }
 
@@ -72,7 +72,7 @@ public class User {
         this.annualIncome = annualIncome;
     }
 
-    public int getMonthlyIncome() {
+    public double getMonthlyIncome() {
         return monthlyIncome;
     }
 
@@ -90,8 +90,8 @@ public class User {
         return nonRecurringExpenses;
     }
 
-    public AppSettings getSettings() {
-        return settings;
+    public UserSettings getUserSettings() {
+        return userSettings;
     }
 
     public void addExpense(ArrayList<Expense> recurringExpenses, ArrayList<Expense> nonRecurringExpenses, Expense currentExpense)
@@ -127,10 +127,6 @@ public class User {
         return rit.next();
     }
 
-    public void renameExpense()
-    {
-        //Might add this feature
-    }
 
     public void deleteExpense(boolean recurring, int index)
     {
@@ -166,13 +162,15 @@ public class User {
 
     }
 
-    public void editExpense()
-    {
-        //Search the array
-        //findExpense();
 
-        //Change data
-    }
+    /*public void editExpense(boolean recurring, int index)
+    {
+        if(recurring)
+        {
+            Expense tempExpense = recurringExpenses.get(index);
+            if(recurringExpenses.get(index).getName().equalsIgnoreCase())
+        }
+    }*/
 
     public void displayRecurring()
     {
@@ -197,27 +195,6 @@ public class User {
         }
     }
 
-    public double calcTotals(boolean recurring)
-    {
-        if(recurring)
-        {
-            //Return the recurring totals
-            //Iterate through the array list and create a running total of the amounts.
-            //You can use a for-loop to iterate through the array list
-
-            for(int i = 0; i < recurringExpenses.size(); i++)
-            {
-                //get a running total
-                //you have something like total += temp; to get a running total
-            }
-            //There are other ways to iterate through an array list, but we have to have a for-loop in the project 
-        }
-
-        //Return the non-recurring totals
-        //Do the same thing as above
-        return 0;
-    }
-
     public void displayTotals(boolean recurring)
     {
         if(recurring)
@@ -240,7 +217,7 @@ public class User {
     }
 
     public double calcTotals(boolean recurring)
-    {   
+    {
         double total = 0;
         if (recurring)
         {
@@ -261,17 +238,32 @@ public class User {
 
         return total;
     }
-    public void totalRemaining(double monthlyIncome)
+
+    public double totalRemaining()
     {
         // Get totals for recurring and non-recurring expenses
         double recurringTotal = calcTotals(true);
         double nonRecurringTotal = calcTotals(false);
 
-        // Calculate remaining incme
+        // Calculate remaining income
         double remainingIncome = monthlyIncome - (recurringTotal + nonRecurringTotal);
 
-        // Print the total remaining
-        System.out.printf("Total remaining income: %.2f\n", remainingIncome);
+        // Return the total remaining
+        return remainingIncome;
     }      
+
+    //To possibly display user information
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", annualIncome=" + annualIncome +
+                ", monthlyIncome=" + monthlyIncome +
+                ", userSettings=" + userSettings +
+                '}';
+    }
 
 }
