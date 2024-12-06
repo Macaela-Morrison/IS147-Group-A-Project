@@ -2,7 +2,7 @@ import java.util.*;
 
 public class DisplayMenus {
 
-    public void mainMenu(Scanner input, User currrentUser){
+    public void mainMenu(Scanner input, User currrentUser, AppSettings applicationSettings){
         while (true) {
 
 
@@ -31,7 +31,7 @@ public class DisplayMenus {
                     displayYearlyOverview();
                     break;
                 case 5:
-                    settingsMenu(input, currrentUser);
+                    settingsMenu(input, currrentUser, applicationSettings);
                     break;
                 case 0:
                     System.out.println("Exiting the program");
@@ -162,17 +162,30 @@ public class DisplayMenus {
         System.out.println("Displaying yearly overview: ");
     }
 
-    public static void settingsMenu(Scanner input, User currentUser) {
+    public static void settingsMenu(Scanner input, User currentUser, AppSettings applicationSettings) {
         boolean exitSettingsMenu = false;
 
         while (!exitSettingsMenu) {
             System.out.println("Settings Menu:");
             System.out.print("Enter a choice: ");
-            System.out.print("1. Edit settings");
+            System.out.println("\n1. Edit user settings");
+            System.out.println("2. Edit application settings");
+            System.out.println("0. Exit to main menu");
             int choice = input.nextInt();
-            if(choice == 1)
+
+            switch(choice)
             {
-                currentUser.getUserSettings().editSettings();
+                case 0:
+                    exitSettingsMenu = true;
+                    break;
+                case 1:
+                    currentUser.getUserSettings().editSettings();
+                    break;
+                case 2:
+                    applicationSettings.editSettings();
+                    break;
+                default:
+                    System.out.println("Invalid input. Please try again");
             }
             System.out.println();
         }

@@ -9,7 +9,9 @@ public class User {
     private double annualIncome;
     private double monthlyIncome;
 
-    private UserSettings userSettings = new UserSettings();
+    private UserSettings userSettings = new UserSettings(monthlyIncome, annualIncome, "User");
+
+
 
     ArrayList<Expense> recurringExpenses = new ArrayList<>();
     ArrayList<Expense> nonRecurringExpenses = new ArrayList<>();
@@ -93,6 +95,7 @@ public class User {
     public UserSettings getUserSettings() {
         return userSettings;
     }
+
 
     public void addExpense(ArrayList<Expense> recurringExpenses, ArrayList<Expense> nonRecurringExpenses, Expense currentExpense)
     {

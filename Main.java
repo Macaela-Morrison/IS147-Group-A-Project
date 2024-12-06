@@ -23,8 +23,9 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
         DisplayMenus menu = new DisplayMenus();
+        AppSettings applicationSettings = new AppSettings("Default", "English", "App");
         //tempUser.displayRecurring();
-        menu.mainMenu(input, tempUser);
+        menu.mainMenu(input, tempUser, applicationSettings);
         tempUser.displayRecurring();
     }
 
