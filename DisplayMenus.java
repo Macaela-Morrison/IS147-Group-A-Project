@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.*;
 
 public class DisplayMenus {
@@ -5,9 +6,16 @@ public class DisplayMenus {
     public void mainMenu(Scanner input, User currrentUser, AppSettings applicationSettings){
         while (true) {
 
-
             System.out.println("Welcome to Personal Budgeting Program! Please see menu options below:");
-            System.out.printf("You have %.2f remaining for this month\n", currrentUser.totalRemaining());
+            if(currrentUser.totalRemaining() < 0)
+            {
+                System.out.printf("You have " + MenuColors.RED_TEXT + " %.2f " + MenuColors.RESET + "remaining for this month\n", currrentUser.totalRemaining());
+            }
+            else
+            {
+                System.out.printf("You have %.2f remaining for this month\n", currrentUser.totalRemaining());
+            }
+
             System.out.println("1. Recurring Expenses");
             System.out.println("2. Non-Recurring Expenses");
             System.out.println("3. Overall Totals");
