@@ -179,10 +179,10 @@ public class DisplayMenus {
                     exitSettingsMenu = true;
                     break;
                 case 1:
-                    currentUser.getUserSettings().editSettings();
+                    currentUser.getUserSettings().editSettings(currentUser, applicationSettings);
                     break;
                 case 2:
-                    applicationSettings.editSettings();
+                    applicationSettings.editSettings(currentUser, applicationSettings);
                     break;
                 default:
                     System.out.println("Invalid input. Please try again");

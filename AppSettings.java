@@ -23,7 +23,7 @@ public class AppSettings extends Settings{
     }
 
     @Override
-    public void editSettings()
+    public void editSettings(User currentUser, AppSettings applicationSettings)
     {
         Scanner userInput = new Scanner(System.in);
         DisplayMenus mainMenu = new DisplayMenus();

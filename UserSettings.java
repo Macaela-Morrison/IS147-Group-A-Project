@@ -34,7 +34,7 @@ public class UserSettings extends Settings{
     }
 
     @Override
-    public void editSettings()
+    public void editSettings(User currentUser, AppSettings applicationSettings)
     {
         Scanner userInput = new Scanner(System.in);
         DisplayMenus mainMenu = new DisplayMenus();
@@ -61,14 +61,16 @@ public class UserSettings extends Settings{
                     //Set monthly income to the new value
                     System.out.println("What is your new monthly income?");
                     newIncome = userInput.nextDouble();
-                    setMonthlyIncome(newIncome);
+                    currentUser.setMonthlyIncome(newIncome);
+                    System.out.println(currentUser.getMonthlyIncome());
                     break;
                 case 2:
                     //Prompt user to enter new yearly income
                     //Set yearly income to the new value
                     System.out.println("What is your new yearly income?");
                     newIncome = userInput.nextDouble();
-                    setYearlyIncome(newIncome);
+                    currentUser.setYearlyIncome(newIncome);
+                    System.out.println(currentUser.getYearlyIncome());
                     break;
             }
         }

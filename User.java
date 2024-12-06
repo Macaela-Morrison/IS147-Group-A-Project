@@ -66,11 +66,11 @@ public class User {
         this.password = password;
     }
 
-    public double getAnnualIncome() {
+    public double getYearlyIncome() {
         return annualIncome;
     }
 
-    public void setAnnualIncome(int annualIncome) {
+    public void setYearlyIncome(double annualIncome) {
         this.annualIncome = annualIncome;
     }
 
@@ -78,7 +78,7 @@ public class User {
         return monthlyIncome;
     }
 
-    public void setMonthlyIncome(int monthlyIncome) {
+    public void setMonthlyIncome(double monthlyIncome) {
         this.monthlyIncome = monthlyIncome;
     }
 

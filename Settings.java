@@ -20,6 +20,6 @@ public abstract class Settings {
         this.type = type;
     }
 
-    public abstract void editSettings();
+    public abstract void editSettings(User currentUser, AppSettings applicationSettings);
 
 }
