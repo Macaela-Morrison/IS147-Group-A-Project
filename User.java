@@ -111,23 +111,30 @@ public class User {
 
     }
 
-    public Expense findExpense(ArrayList<Expense> recurringExpenses,  ArrayList<Expense> nonRecurringExpenses)
-    {
+    public ArrayList<Expense> findExpenses(String name, boolean recurring) {
+        ArrayList<Expense> matchingExpenses = new ArrayList<>();
+        //Convert name to lowercase to make matching more accurate
+        String lowerCaseName = name.toLowerCase();
+
+        // Search in recurring expenses using an iterator and add any partial matches to the temporary array list
         Iterator<Expense> rit = recurringExpenses.iterator();
-        while(rit.hasNext())
-        {
+        while (rit.hasNext()) {
             Expense temp = rit.next();
-            System.out.println(temp);
+            if (temp.getName().toLowerCase().contains(lowerCaseName) && recurring) {
+                matchingExpenses.add(temp);
+            }
         }
 
+        // Search in non-recurring expenses using an iterator
         Iterator<Expense> nit = nonRecurringExpenses.iterator();
-        while(nit.hasNext())
-        {
+        while (nit.hasNext()) {
             Expense temp = nit.next();
-            System.out.println(temp);
+            if (temp.getName().toLowerCase().contains(lowerCaseName) && !recurring) {
+                matchingExpenses.add(temp);
+            }
         }
 
-        return rit.next();
+        return matchingExpenses;
     }
 
 

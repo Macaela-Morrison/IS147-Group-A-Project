@@ -3,7 +3,7 @@ import java.util.*;
 
 public class DisplayMenus {
 
-    public void mainMenu(Scanner input, User currrentUser, AppSettings applicationSettings){
+    public static void mainMenu(Scanner input, User currrentUser, AppSettings applicationSettings){
         while (true) {
 
             System.out.println("Welcome to Personal Budgeting Program! Please see menu options below:");
@@ -52,7 +52,7 @@ public class DisplayMenus {
         }
     }
 
-    public void recurringExpensesMenu(Scanner input, User currentUser) {
+    public static void recurringExpensesMenu(Scanner input, User currentUser) {
         boolean exitRecurringMenu = false;
 
         while (!exitRecurringMenu) {
@@ -88,7 +88,8 @@ public class DisplayMenus {
                     currentUser.displayTotals(true);
                     break;
                 case 4:
-                    System.out.println("Search for Expense: ");
+                    System.out.println("Search for a recurring expense: ");
+                    searchMenu(input, currentUser, true);
                     break;
                 case 5:
                     System.out.println("You chose to edit an expense: ");
@@ -104,7 +105,7 @@ public class DisplayMenus {
         }
     }
 
-    public void nonRecurringExpensesMenu(Scanner input, User currentUser) {
+    public static void nonRecurringExpensesMenu(Scanner input, User currentUser) {
         boolean exitNonRecurringMenu = false;
 
         while (!exitNonRecurringMenu) {
@@ -137,7 +138,8 @@ public class DisplayMenus {
                     currentUser.displayTotals(false);
                     break;
                 case 4:
-                    System.out.println("Search for an Expense: ");
+                    System.out.println("Search for a non-recurring expense: ");
+                    searchMenu(input, currentUser, false);
                     break;
                 case 5:
                     System.out.println("You chose to edit an expense: ");
@@ -154,7 +156,7 @@ public class DisplayMenus {
     }
 
 
-    public void displayOverallTotal(User currentUser) {
+    public static void displayOverallTotal(User currentUser) {
         double totalRecurring = currentUser.calcTotals(true);
         double totalNonRecurring = currentUser.calcTotals(false);
         double overallTotal = totalRecurring + totalNonRecurring;
@@ -167,8 +169,42 @@ public class DisplayMenus {
     }
 
     public static void displayYearlyOverview() {
-        System.out.println("Displaying yearly overview: ");
+        System.out.println("Future implementation");
     }
+
+    public static void searchMenu(Scanner input, User currentUser, boolean recurring) {
+        boolean searchAgain = true;
+        input.nextLine(); // Clear the buffer
+        do {
+            ArrayList<Expense> tempList = new ArrayList<>();
+
+            System.out.print("Please enter the name of the expense: ");
+            String searchExpense = input.nextLine();
+
+            tempList = currentUser.findExpenses(searchExpense, recurring);
+
+            if (!tempList.isEmpty()) {
+                int index = 1;
+                Iterator<Expense> it = tempList.iterator();
+                while (it.hasNext()) {
+                    Expense temp = it.next();
+                    System.out.println(index + ". " + temp);
+                    index++;
+                }
+            } else {
+                System.out.println("No matching expenses found.");
+            }
+
+            System.out.print("Would you like to search again? Enter Y for yes and N for no: ");
+            String response = input.nextLine();
+            if(response.equalsIgnoreCase("N"))
+            {
+                searchAgain = false;
+            }
+        } while (searchAgain);
+    }
+
+
 
     public static void settingsMenu(Scanner input, User currentUser, AppSettings applicationSettings) {
         boolean exitSettingsMenu = false;
