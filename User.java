@@ -175,20 +175,20 @@ public class User {
 
     public void editExpense(boolean recurring, int index, String name, Double amount, String category, boolean stillRecurring)
     {
-        if(recurring) {
+        if(recurring) { //Is a recurring expense
             Expense tempExpense = recurringExpenses.get(index);
             tempExpense.setName(name);
             tempExpense.setAmount(amount);
             tempExpense.setCategory(category);
             tempExpense.setRecurring(stillRecurring);
 
-            if (stillRecurring)
+            if (stillRecurring)//Still a recurring expense, ie. no change
             {
                 return;
             }
             else
             {
-                nonRecurringExpenses.add(tempExpense);
+                nonRecurringExpenses.add(tempExpense);//Not a recurring expense
                 recurringExpenses.remove(index);
             }
         }
@@ -207,7 +207,7 @@ public class User {
             else
             {
                 recurringExpenses.add(tempExpense);
-                recurringExpenses.remove(index);
+                nonRecurringExpenses.remove(index);
             }
         }
     }

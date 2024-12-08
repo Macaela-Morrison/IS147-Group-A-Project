@@ -9,7 +9,7 @@ public class DisplayMenus {
             System.out.println("Welcome to Personal Budgeting Program! Please see menu options below:");
             if(currrentUser.totalRemaining() < 0)
             {
-                System.out.printf("You have " + MenuColors.RED_TEXT + " %.2f " + MenuColors.RESET + "remaining for this month\n", currrentUser.totalRemaining());
+                System.out.printf("You have overspent by " + MenuColors.RED_TEXT + " %.2f " + MenuColors.RESET + " for this month\n", (currrentUser.totalRemaining())*-1);
             }
             else
             {
@@ -58,8 +58,8 @@ public class DisplayMenus {
         while (!exitRecurringMenu) {
             System.out.println("1. Add Expense");
             System.out.println("2. Delete Expense");
-            System.out.println("3. View Totals");
-            System.out.println("4. Search For An Expense");
+            System.out.println("3. View Recurring Expenses");
+            System.out.println("4. Search for a Recurring Expense");
             System.out.println("5. Edit Existing Expense");
             System.out.println("6. Back to Main Menu");
             System.out.println("0. Quit");
@@ -74,10 +74,6 @@ public class DisplayMenus {
                 case 1:
                     System.out.println("You chose to add an expense");
                     addExpenseMenu(currentUser);
-
-                    //Testing
-                    //currentUser.displayRecurring();
-
                     break;
                 case 2:
                     System.out.println("You chose to delete an expense");
@@ -112,8 +108,8 @@ public class DisplayMenus {
             System.out.println("Non-Recurring Expenses Menu:");
             System.out.println("1. Add Non-Recurring Expense");
             System.out.println("2. Delete Non-Recurring Expense");
-            System.out.println("3. View Non-Recurring Expense Total");
-            System.out.println("4. Search for a Non-Recurring expense");
+            System.out.println("3. View Non-Recurring Expenses");
+            System.out.println("4. Search for a Non-Recurring Expense");
             System.out.println("5. Edit Existing Expense");
             System.out.println("6. Back to Main Menu");
             System.out.println("0. Quit");
@@ -241,9 +237,19 @@ public class DisplayMenus {
         System.out.println("Please provide the details of your expense.");
         System.out.print("Enter a name for your expense: ");
         String name = input.nextLine();
-        System.out.print("Enter the amount: $");
-        double amount = input.nextDouble();
-        input.nextLine(); //Clear the leftover newline character
+        double amount = 0;
+        boolean validAmount = false;
+        while (!validAmount) {
+            System.out.print("Enter the amount: $");
+            if (input.hasNextDouble()) {
+                amount = input.nextDouble();
+                validAmount = true;
+            } else {
+                System.out.println("Invalid input. Please enter a valid number.");
+                input.next(); // Clear the invalid input
+            }
+        }
+        input.nextLine();//Clear the buffer
         System.out.print("Enter the category: ");
         String category = input.nextLine();
         System.out.print("Is this a recurring expense? Type Y for yes and N for no: ");
@@ -306,8 +312,18 @@ public class DisplayMenus {
         System.out.println("Please provide the details of your expense.");
         System.out.print("Enter a name for your expense: ");
         String name = input.nextLine();
-        System.out.print("Enter the amount: $");
-        double amount = input.nextDouble();
+        double amount = 0;
+        boolean validAmount = false;
+        while (!validAmount) {
+            System.out.print("Enter the amount: $");
+            if (input.hasNextDouble()) {
+                amount = input.nextDouble();
+                validAmount = true;
+            } else {
+                System.out.println("Invalid input. Please enter a valid number.");
+                input.next(); // Clear the invalid input
+            }
+        }
         input.nextLine(); //Clear the leftover newline character
         System.out.print("Enter the category: ");
         String category = input.nextLine();

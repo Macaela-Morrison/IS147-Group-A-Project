@@ -27,7 +27,7 @@ public class Expense {
 
     public String getTimestamp() {
         LocalDateTime currentDate = LocalDateTime.now();
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm");
         return currentDate.format(format);
     }
 
