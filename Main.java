@@ -34,13 +34,12 @@ public class Main {
 
         // Initialize the menu and application settings
         DisplayMenus menu = new DisplayMenus();
-        AppSettings applicationSettings = new AppSettings("Default", "English", "App");
+        AppSettings applicationSettings = new AppSettings(MenuColors.RESET, "English", "App");
 
         // Launch the main menu
         menu.mainMenu(input, tempUser, applicationSettings);
 
-        // Display recurring expenses as a test
-        tempUser.displayRecurring();
+
     }
 }
 

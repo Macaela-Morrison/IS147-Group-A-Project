@@ -83,7 +83,7 @@ public class UserSettings extends Settings {
             System.out.println("Please choose the setting you would like to change: ");
             System.out.println("1. Monthly income ");
             System.out.println("2. Yearly income");
-            // Might add an option to change text color
+
             System.out.println("0. Cancel");
 
             option = userInput.nextInt();
@@ -97,16 +97,45 @@ public class UserSettings extends Settings {
                     // Set monthly income to the new value
                     System.out.println("What is your new monthly income?");
                     newIncome = userInput.nextDouble();
+                    userInput.nextLine();//Clear the buffer
                     currentUser.setMonthlyIncome(newIncome);
-                    System.out.println(currentUser.getMonthlyIncome());
+                    System.out.println("Monthly income successfully updated\n");
+
+                    // Ask if the user wants to automatically update yearly income
+                    System.out.println("Would you like to automatically update your yearly income? Type Y for yes and N for no");
+                    String updateYearly = userInput.nextLine();
+                    if (updateYearly.equalsIgnoreCase("Y")) {
+                        double updatedYearlyIncome = newIncome * 12.0;
+                        currentUser.setYearlyIncome(updatedYearlyIncome);
+                        System.out.println("Yearly income updated to: " + updatedYearlyIncome);
+                    }
+                    else
+                    {
+                        System.out.println("Understood! Yearly income can be updated in the user settings menu later");
+                    }
                     break;
                 case 2:
                     // Prompt user to enter new yearly income
                     // Set yearly income to the new value
                     System.out.println("What is your new yearly income?");
                     newIncome = userInput.nextDouble();
+                    userInput.nextLine();//Clear the buffer
                     currentUser.setYearlyIncome(newIncome);
-                    System.out.println(currentUser.getYearlyIncome());
+                    System.out.println("Yearly income successfully updated\n");
+
+                    // Ask if the user wants to automatically update monthly income
+                    System.out.println("Would you like to automatically update your monthly income? Type Y for yes and N for no");
+                    String updateMonthly = userInput.nextLine();
+                    if (updateMonthly.equalsIgnoreCase("Y")) {
+                        double updatedMonthlyIncome = newIncome / 12.0;
+                        currentUser.setMonthlyIncome(updatedMonthlyIncome);
+                        System.out.println("Monthly income updated to: " + updatedMonthlyIncome);
+                    }
+                    else
+                    {
+                        System.out.println("Understood! Monthly income can be updated in the user settings menu later");
+                    }
+
                     break;
             }
         }

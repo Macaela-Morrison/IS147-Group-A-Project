@@ -25,7 +25,7 @@ public class DisplayMenus {
         while (true) {
 
             String color = applicationSettings.getColorScheme();
-            System.out.println(color + "Welcome to Personal Budgeting Program! Please see menu options below:");
+            System.out.println("\n" + color + "Welcome to Personal Budgeting Program! Please see menu options below:");
             if(currentUser.totalRemaining() < 0)
             {
                 System.out.printf("You have overspent by " + MenuColors.RED_TEXT + " %.2f " + color + " for this month\n", (currentUser.totalRemaining())*-1);
@@ -55,7 +55,7 @@ public class DisplayMenus {
                     displayOverallTotal(currentUser);
                     break;
                 case 4:
-                    displayYearlyOverview();
+                    displayYearlyOverview(currentUser);
                     break;
                 case 5:
                     settingsMenu(input, currentUser, applicationSettings);
@@ -200,8 +200,12 @@ public class DisplayMenus {
     /**
      * Displays the yearly overview (currently a placeholder for future implementation).
      */
-    public static void displayYearlyOverview() {
-        System.out.println("Future implementation");
+    public static void displayYearlyOverview(User currentUser) {
+        System.out.println("Here is your overview:");
+        System.out.printf("Your yearly income is: $%.2f\n", currentUser.getYearlyIncome());
+        System.out.printf("Your monthly income is: $%.2f\n", currentUser.getMonthlyIncome());
+        displayOverallTotal(currentUser);
+        //Would like to expand this summary
     }
 
     /**
