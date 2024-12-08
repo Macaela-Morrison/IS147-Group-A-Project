@@ -1,8 +1,26 @@
 import java.awt.*;
 import java.util.*;
 
+
+/**
+ * Display menu's class contains all the code needed for the program menu's.
+ */
 public class DisplayMenus {
 
+    /**
+     * Default constructor for DisplayMenus.
+     */
+    public DisplayMenus()
+    {
+
+    }
+    /**
+     * Displays the main menu and handles user input for selecting different options.
+     *
+     * @param input               The Scanner object for reading user input.
+     * @param currrentUser        The current user object containing user details.
+     * @param applicationSettings The application settings object.
+     */
     public static void mainMenu(Scanner input, User currrentUser, AppSettings applicationSettings){
         while (true) {
 
@@ -52,6 +70,12 @@ public class DisplayMenus {
         }
     }
 
+    /**
+     * Displays the menu for managing recurring expenses.
+     *
+     * @param input      The Scanner object for reading user input.
+     * @param currentUser The current user object containing user details.
+     */
     public static void recurringExpensesMenu(Scanner input, User currentUser) {
         boolean exitRecurringMenu = false;
 
@@ -101,6 +125,12 @@ public class DisplayMenus {
         }
     }
 
+    /**
+     * Displays the menu for managing non-recurring expenses.
+     *
+     * @param input      The Scanner object for reading user input.
+     * @param currentUser The current user object containing user details.
+     */
     public static void nonRecurringExpensesMenu(Scanner input, User currentUser) {
         boolean exitNonRecurringMenu = false;
 
@@ -151,7 +181,11 @@ public class DisplayMenus {
         }
     }
 
-
+    /**
+     * Displays the overall total of both recurring and non-recurring expenses.
+     *
+     * @param currentUser The current user object containing user details.
+     */
     public static void displayOverallTotal(User currentUser) {
         double totalRecurring = currentUser.calcTotals(true);
         double totalNonRecurring = currentUser.calcTotals(false);
@@ -164,10 +198,20 @@ public class DisplayMenus {
 
     }
 
+    /**
+     * Displays the yearly overview (currently a placeholder for future implementation).
+     */
     public static void displayYearlyOverview() {
         System.out.println("Future implementation");
     }
 
+    /**
+     * Allows the user to search for an expense (either recurring or non-recurring).
+     *
+     * @param input          The Scanner object for reading user input.
+     * @param currentUser    The current user object containing user details.
+     * @param recurring      Whether the search is for a recurring expense.
+     */
     public static void searchMenu(Scanner input, User currentUser, boolean recurring) {
         boolean searchAgain = true;
         input.nextLine(); // Clear the buffer
@@ -201,7 +245,13 @@ public class DisplayMenus {
     }
 
 
-
+    /**
+     * Displays the settings menu and allows the user to modify user and application settings.
+     *
+     * @param input             The Scanner object for reading user input.
+     * @param currentUser       The current user object containing user details.
+     * @param applicationSettings The application settings object.
+     */
     public static void settingsMenu(Scanner input, User currentUser, AppSettings applicationSettings) {
         boolean exitSettingsMenu = false;
 
@@ -231,6 +281,11 @@ public class DisplayMenus {
         }
     }
 
+    /**
+     * Displays the menu to add a new expense.
+     *
+     * @param currentUser The current user object containing user details.
+     */
     public static void addExpenseMenu(User currentUser)
     {
         Scanner input = new Scanner(System.in);
@@ -268,6 +323,12 @@ public class DisplayMenus {
 
     }
 
+    /**
+     * Displays the menu to delete an existing expense.
+     *
+     * @param currentUser The current user object containing user details.
+     * @param recurring   Whether the expense is recurring or not.
+     */
     public static void deleteExpenseMenu(User currentUser, boolean recurring)
     {
         Scanner input = new Scanner(System.in);
@@ -289,6 +350,12 @@ public class DisplayMenus {
         currentUser.deleteExpense(recurring, index);
     }
 
+    /**
+     * Displays the menu to edit an existing expense.
+     *
+     * @param currentUser The current user object containing user details.
+     * @param recurring   Whether the expense is recurring or not.
+     */
     public static void editExpenseMenu(User currentUser, boolean recurring)
     {
         Scanner input = new Scanner(System.in);

@@ -1,3 +1,10 @@
+/**
+ * Utility class providing ANSI escape codes for text and background colors,
+ * as well as text styles to be used in console applications.
+ *
+ * This class allows for easy manipulation of console text formatting,
+ * enabling colored and styled text output in Java console applications.
+ */
 public class MenuColors {
 
     //This class provides the code needed to use ANSI escape sequences to change menu text color
