@@ -11,7 +11,7 @@ public abstract class Settings {
      * Default constructor.
      */
     public Settings() {
-        // No initialization required
+
     }
 
     /**

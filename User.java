@@ -29,12 +29,12 @@ public class User {
     /**
      * Parameterized constructor for User.
      *
-     * @param username      the username of the user
-     * @param name          the name of the user
-     * @param lastName      the last name of the user
-     * @param password      the password of the user
-     * @param annualIncome  the annual income of the user
-     * @param monthlyIncome the monthly income of the user
+     * @param username      The username of the user
+     * @param name          The name of the user
+     * @param lastName      The last name of the user
+     * @param password      The password of the user
+     * @param annualIncome  The annual income of the user
+     * @param monthlyIncome The monthly income of the user
      */
     User(String username, String name, String lastName, String password, int annualIncome, int monthlyIncome) {
         this.username = username;
@@ -54,11 +54,17 @@ public class User {
     /**
      * Sets the name of the user.
      *
-     * @param name the name to set
+     * @param name The name to set
      */
     public void setName(String name) {
         this.name = name;
     }
+
+    /**
+     * Gets the username of the user.
+     *
+     * @return username The username of the user
+     */
 
     public String getUsername() {
         return username;
@@ -73,6 +79,11 @@ public class User {
         this.username = username;
     }
 
+    /**
+     * Gets the last name of the user.
+     *
+     * @return lastName The last name of the user
+     */
     public String getLastName() {
         return lastName;
     }
@@ -80,12 +91,18 @@ public class User {
     /**
      * Sets the last name of the user.
      *
-     * @param lastName the last name to set
+     * @param lastName The last name to set
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+
+    /**
+     * Gets the password of the user.
+     *
+     * @return password The password of the user
+     */
     public String getPassword() {
         return password;
     }
@@ -99,6 +116,11 @@ public class User {
         this.password = password;
     }
 
+    /**
+     * Gets the yearly income of the user.
+     *
+     * @return annualIncome The yearly income of the user
+     */
     public double getYearlyIncome() {
         return annualIncome;
     }
@@ -112,6 +134,11 @@ public class User {
         this.annualIncome = annualIncome;
     }
 
+    /**
+     * Gets the monthly of the user.
+     *
+     * @return monthlyIncome The monthly income of the user
+     */
     public double getMonthlyIncome() {
         return monthlyIncome;
     }
@@ -143,6 +170,11 @@ public class User {
         return nonRecurringExpenses;
     }
 
+    /**
+     * Gets the settings associated with the user profile
+     *
+     * @return username The username of the user
+     */
     public UserSettings getUserSettings() {
         return userSettings;
     }
@@ -150,9 +182,9 @@ public class User {
     /**
      * Adds an expense to the appropriate list (recurring or non-recurring).
      *
-     * @param recurringExpenses    the list of recurring expenses
-     * @param nonRecurringExpenses the list of non-recurring expenses
-     * @param currentExpense       the expense to add
+     * @param recurringExpenses    The list of recurring expenses
+     * @param nonRecurringExpenses The list of non-recurring expenses
+     * @param currentExpense       The expense to add
      */
     public void addExpense(ArrayList<Expense> recurringExpenses, ArrayList<Expense> nonRecurringExpenses, Expense currentExpense) {
         if (currentExpense.getIsRecurring()) {
@@ -165,9 +197,9 @@ public class User {
     /**
      * Finds expenses by name and recurrence type (recurring or non-recurring).
      *
-     * @param name      the name to search for
-     * @param recurring whether to search in recurring expenses
-     * @return a list of matching expenses
+     * @param name      The name to search for
+     * @param recurring Whether to search in recurring expenses or non-recurring expenses
+     * @return A list of matching expenses
      */
     public ArrayList<Expense> findExpenses(String name, boolean recurring) {
         ArrayList<Expense> matchingExpenses = new ArrayList<>();
@@ -192,9 +224,10 @@ public class User {
 
     /**
      * Deletes an expense by its index and recurrence type.
+     * Index is determined by user input
      *
-     * @param recurring whether the expense is recurring
-     * @param index     the index of the expense to delete
+     * @param recurring Whether the expense is recurring
+     * @param index     The index of the expense to delete
      */
     public void deleteExpense(boolean recurring, int index) {
         if (recurring) {
@@ -216,13 +249,15 @@ public class User {
 
     /**
      * Edits an expense by its index and updates its details.
+     * Details are determined by user input
+     * An expense will be moved to the correct list if the "recurring" property changes
      *
-     * @param recurring      whether the expense is recurring
-     * @param index          the index of the expense to edit
-     * @param name           the new name of the expense
-     * @param amount         the new amount of the expense
-     * @param category       the new category of the expense
-     * @param stillRecurring whether the expense is still recurring after the edit
+     * @param recurring      Whether the expense is recurring
+     * @param index          The index of the expense to edit
+     * @param name           The new name of the expense
+     * @param amount         The new amount of the expense
+     * @param category       The new category of the expense
+     * @param stillRecurring Whether the expense is still recurring after the edit
      */
     public void editExpense(boolean recurring, int index, String name, Double amount, String category, boolean stillRecurring) {
         if (recurring) {
@@ -279,7 +314,7 @@ public class User {
     /**
      * Displays the total expenses based on recurrence type (recurring or non-recurring).
      *
-     * @param recurring whether to calculate for recurring expenses
+     * @param recurring Whether to display totals for recurring or non-recurring expenses
      */
     public void displayTotals(boolean recurring) {
         if (recurring) {
@@ -296,7 +331,7 @@ public class User {
     /**
      * Calculates the total expense amount based on recurrence type.
      *
-     * @param recurring whether to calculate for recurring expenses
+     * @param recurring Whether to calculate for recurring expenses or non-recurring expenses
      * @return the total expense amount
      */
     public double calcTotals(boolean recurring) {
@@ -327,6 +362,7 @@ public class User {
 
     /**
      * Provides a string representation of the user object.
+     * This method was mostly used for internal testing to ensure information updated correctly
      *
      * @return a string representation of the user
      */

@@ -8,8 +8,6 @@ import java.util.Scanner;
 public class UserSettings extends Settings {
     private double monthlyIncome;
     private double yearlyIncome;
-    private String username;
-    private String password;
 
     /**
      * Default constructor that calls the superclass constructor.

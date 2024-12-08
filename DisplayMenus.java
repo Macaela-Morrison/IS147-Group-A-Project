@@ -18,20 +18,21 @@ public class DisplayMenus {
      * Displays the main menu and handles user input for selecting different options.
      *
      * @param input               The Scanner object for reading user input.
-     * @param currrentUser        The current user object containing user details.
+     * @param currentUser         The current user object containing user details.
      * @param applicationSettings The application settings object.
      */
-    public static void mainMenu(Scanner input, User currrentUser, AppSettings applicationSettings){
+    public static void mainMenu(Scanner input, User currentUser, AppSettings applicationSettings){
         while (true) {
 
-            System.out.println("Welcome to Personal Budgeting Program! Please see menu options below:");
-            if(currrentUser.totalRemaining() < 0)
+            String color = applicationSettings.getColorScheme();
+            System.out.println(color + "Welcome to Personal Budgeting Program! Please see menu options below:");
+            if(currentUser.totalRemaining() < 0)
             {
-                System.out.printf("You have overspent by " + MenuColors.RED_TEXT + " %.2f " + MenuColors.RESET + " for this month\n", (currrentUser.totalRemaining())*-1);
+                System.out.printf("You have overspent by " + MenuColors.RED_TEXT + " %.2f " + color + " for this month\n", (currentUser.totalRemaining())*-1);
             }
             else
             {
-                System.out.printf("You have %.2f remaining for this month\n", currrentUser.totalRemaining());
+                System.out.printf("You have %.2f remaining for this month\n", currentUser.totalRemaining());
             }
 
             System.out.println("1. Recurring Expenses");
@@ -45,19 +46,19 @@ public class DisplayMenus {
 
             switch (number) {
                 case 1:
-                    recurringExpensesMenu(input, currrentUser);
+                    recurringExpensesMenu(input, currentUser);
                     break;
                 case 2:
-                    nonRecurringExpensesMenu(input,currrentUser);
+                    nonRecurringExpensesMenu(input,currentUser);
                     break;
                 case 3:
-                    displayOverallTotal(currrentUser);
+                    displayOverallTotal(currentUser);
                     break;
                 case 4:
                     displayYearlyOverview();
                     break;
                 case 5:
-                    settingsMenu(input, currrentUser, applicationSettings);
+                    settingsMenu(input, currentUser, applicationSettings);
                     break;
                 case 0:
                     System.out.println("Exiting the program");
@@ -193,8 +194,6 @@ public class DisplayMenus {
         System.out.println("Total recurring expenses: $" + totalRecurring);
         System.out.println("Total non-recurring expenses: $" + totalNonRecurring);
         System.out.println("Your total expenses for this month so far is: $" + overallTotal);
-
-
 
     }
 

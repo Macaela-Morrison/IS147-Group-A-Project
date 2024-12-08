@@ -96,7 +96,7 @@ public class Expense {
     /**
      * Sets the category of the expense.
      *
-     * @param category the category of the expense to set
+     * @param category the category the expense is set to be in
      */
     public void setCategory(String category) {
         this.category = category;
@@ -122,6 +122,7 @@ public class Expense {
 
     /**
      * Creates a new Expense instance when called. Used in User class to add a new expense
+     * and for initial setup of project demo
      *
      * @param name        the name of the expense
      * @param amount      the amount of the expense
