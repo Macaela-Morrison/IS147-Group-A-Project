@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+//Project presentation: https://docs.google.com/presentation/d/15KtEswx6XFFX_KFv122hPxB8DtV99vRerD9sDFOUGOI/edit#slide=id.p
+
 /**
  * Main class to run the budgeting application.
  * Provides a demonstration of the application's functionality and allows interaction via menus.
