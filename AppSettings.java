@@ -8,7 +8,7 @@ import java.util.*;
 public class AppSettings extends Settings {
 
     private String colorScheme = MenuColors.RESET;
-    public String language; // Just an extra example of an app setting
+    private String language; // Just an extra example of an app setting
 
     /**
      * Default constructor that calls the superclass constructor.
